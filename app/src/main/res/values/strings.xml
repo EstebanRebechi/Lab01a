@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="title">Calculadora plazo fijo</string>
+    <string name="email">Correo electrónico</string>
+    <string name="cuit">CUIT</string>
+    <string name="importe">Importe</string>
+    <string name="dias_seleccionados">Días seleccionados</string>
+    <string name="cantidad_dias">Cantidad de días</string>
+    <string name="rendimiento">Rendimiento</string>
+    <string name="boton_hacer_plazo_fijo">Hacer plazo fijo</string>
+    <string name="renovar">Renovar automáticamente al vencimiento</string>
+    <string name="texto_rendimiento_valido">Plazo fijo realizado. Recibirá %1$.2f al vencimiento!</string>
+    <string name="texto_rendimiento_invalido">No se pudo realizar el plazo fijo</string>
+</resources>
