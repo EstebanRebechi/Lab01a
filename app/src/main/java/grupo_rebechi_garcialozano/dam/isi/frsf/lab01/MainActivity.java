@@ -8,40 +8,45 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText importeIngresado;
-    private Integer importeIngresadoInt;
+    private EditText editTextImporte;
+    private Integer importeIngresado;
+    private Integer plazoIngresado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        final Button boton = (Button) findViewById(R.id.boton_hacer_plazo_fijo);
-        boton.setOnClickListener(new View.OnClickListener() {
+        final Button btnHacerPlazoFijo = (Button) findViewById(R.id.btn_hacer_plazo_fijo);
+        btnHacerPlazoFijo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getDatosIngresados();
                 if(sonDatosValidos()) {
-                    boton.setTextColor(getColor(R.color.colorVerde));
-                    boton.setText(getString(R.string.texto_rendimiento_valido, rendimiento));
+                    double rendimientoCalculado = calcularRendimiento(importeIngresado, plazoIngresado);
+                    btnHacerPlazoFijo.setTextColor(getColor(R.color.colorVerde));
+                    btnHacerPlazoFijo.setText(getString(R.string.texto_rendimiento_valido, rendimientoCalculado));
                 } else {
-                    boton.setTextColor(getColor(R.color.colorRojo));
-                    boton.setText(getString(R.string.texto_rendimiento_invalido));
+                    btnHacerPlazoFijo.setTextColor(getColor(R.color.colorRojo));
+                    btnHacerPlazoFijo.setText(getString(R.string.texto_rendimiento_invalido));
                 }
             }
         });
     }
 
+    private double calcularRendimiento(Integer capital, Integer plazo) {
+        return 0.0;
+    }
+
     private boolean sonDatosValidos() {
         // Hacer otras validaciones de ser necesario
-        return importeIngresadoInt>0;
+        return importeIngresado >0;
     }
 
     private void getDatosIngresados() {
         // Obtener mail, CUIT y checkbox de ser necesario
-        importeIngresado = (EditText) findViewById(R.id.importe_ingreso);
-        importeIngresadoInt = Integer.valueOf(importeIngresado.getText().toString());
+        editTextImporte = (EditText) findViewById(R.id.edittext_importe);
+        importeIngresado = Integer.valueOf(editTextImporte.getText().toString());
 
     }
 }

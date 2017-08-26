@@ -12,7 +12,9 @@
         android:orientation="vertical"
         android:weightSum="1"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="31dp">
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp">
 
         <TextView
             android:id="@+id/textView"
@@ -65,7 +67,7 @@
             tools:layout_editor_absoluteY="204dp" />
 
         <EditText
-            android:id="@+id/importe_ingreso"
+            android:id="@+id/edittext_importe"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -126,21 +128,19 @@
             tools:layout_editor_absoluteY="443dp" />
 
         <Button
-            android:id="@+id/boton_hacer_plazo_fijo"
+            android:id="@+id/btn_hacer_plazo_fijo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="@string/boton_hacer_plazo_fijo"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="468dp"
-            tools:text="@string/boton_hacer_plazo_fijo" />
+            tools:layout_editor_absoluteY="468dp" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="18sp"
-            tools:text="@string/texto_rendimiento" />
+            android:text="@string/texto_rendimiento_invalido"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
