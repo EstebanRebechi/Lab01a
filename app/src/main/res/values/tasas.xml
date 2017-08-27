@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hasta_5000_menor_a_30_dias">25%</string>
-    <string name="hasta_5000_mayor_o_igual_a_30_dias">27.5%</string>
-    <string name="desde_5000_hasta_99999_menor_a_30_dias">30%</string>
-    <string name="desde_5000_hasta_99999_mayor_o_igual_a_30_dias">32.3%</string>
-    <string name="desde_99999_menor_a_30_dias">35%</string>
-    <string name="desde_99999_mayor_o_igual_a_30_dias">38.5%</string>
+    <string name="hasta_5000_corto">25</string>
+    <string name="hasta_5000_largo">27.5</string>
+    <string name="de_5000_a_99999_corto">30</string>
+    <string name="de_5000_a_99999_largo">32.3</string>
+    <string name="desde_99999_corto">35</string>
+    <string name="desde_99999_largo">38.5</string>
 </resources>
