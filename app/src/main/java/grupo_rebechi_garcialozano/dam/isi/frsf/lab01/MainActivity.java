@@ -2,11 +2,14 @@ package grupo_rebechi_garcialozano.dam.isi.frsf.lab01;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnHacerPlazoFijo.setOnClickListener(new hacerPlazoFijoBtnListener());
         seekBarCantDias.setOnSeekBarChangeListener(new plazoSeekBarListener());
-        editTextImporte.setOnFocusChangeListener(new editTextFocusChangeListener());
+        editTextImporte.addTextChangedListener(new editTextTextChangedListener());
     }
 
     private double calcularRendimiento(Double capital, Integer plazo) {
@@ -85,9 +88,13 @@ public class MainActivity extends AppCompatActivity {
     private void getDatosIngresados() {
         correo = editTextCorreo.getText().toString();
         cuit =  editTextCuit.getText().toString();
+        getImporteIngresado();
+        quiereRenovar = chBoxRenovar.isChecked();
+    }
+
+    private void getImporteIngresado() {
         String strImporte = editTextImporte.getText().toString();
         importeIngresado = strNotEmpty(strImporte) ? Double.valueOf(strImporte) : 0.00;
-        quiereRenovar = chBoxRenovar.isChecked();
     }
 
     private class plazoSeekBarListener implements SeekBar.OnSeekBarChangeListener {
@@ -104,7 +111,28 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
+            getImporteIngresado();
             if (importeIngresado > 0) calcularRendimiento(importeIngresado, plazoIngresado);
+            else textViewRendimiento.setText("$0.00");
+        }
+    }
+
+    private class editTextTextChangedListener implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            textViewRendimientoMensaje.setVisibility(View.INVISIBLE);
+            getImporteIngresado();
+            if(importeIngresado > 0) calcularRendimiento(importeIngresado, plazoIngresado);
             else textViewRendimiento.setText("$0.00");
         }
     }
@@ -122,18 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 textViewRendimientoMensaje.setText(getString(R.string.texto_rendimiento_invalido));
             }
             textViewRendimientoMensaje.setVisibility(View.VISIBLE);
-        }
-    }
-
-    private class editTextFocusChangeListener implements View.OnFocusChangeListener {
-        @Override
-        public void onFocusChange(View view, boolean hasFocus) {
-            textViewRendimientoMensaje.setVisibility(View.INVISIBLE);
-            if(!hasFocus){
-                getDatosIngresados();
-                if(importeIngresado > 0) calcularRendimiento(importeIngresado, plazoIngresado);
-                else textViewRendimiento.setText("$0.00");
-            }
         }
     }
 }
